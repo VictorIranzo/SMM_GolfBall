@@ -32,4 +32,14 @@ public class PlayerController : MonoBehaviour {
         // The vector is multiply by the speed scalar.
         playerRigidBody.AddForce(movement * speed);
 	}
+
+    // other is the object which we have collide.
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Pick Up"))
+        {
+            other.gameObject.SetActive(false);
+        }
+        // Destroy(other.gameObject); This sentence destroy the objects.
+    }
 }
