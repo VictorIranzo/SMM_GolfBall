@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour {
     public float speed;
 
     private Rigidbody playerRigidBody;
+    private int pointsCount;
 
     // Reference to Rigidbody is set in this method. It is called exactly once in the lifetime of the script before any of the Update methods.
     void Start() {
         // Gets the Rigidbody component of the player.
         playerRigidBody = GetComponent<Rigidbody>();
+        pointsCount = 0;
     }
 
 	// Called before frame is rendered.
@@ -39,6 +41,7 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
+            pointsCount++;
         }
         // Destroy(other.gameObject); This sentence destroy the objects.
     }
