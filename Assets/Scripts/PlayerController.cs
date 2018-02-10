@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
@@ -49,13 +50,17 @@ public class PlayerController : MonoBehaviour {
             pointsCount++;
             this.SetCountText();
         }
+        if (other.gameObject.CompareTag("Fall plane"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        }
         // Destroy(other.gameObject); This sentence destroy the objects.
     }
 
     void SetCountText()
     {
-        countText.text = "Count: " + pointsCount.ToString();
-        if (pointsCount >= 8)
+        countText.text = "Coins: " + pointsCount.ToString();
+        if (pointsCount >= 12)
         {
             winText.text = "You win!";
         }
