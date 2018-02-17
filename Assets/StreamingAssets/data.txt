@@ -1,2 +1,3 @@
 Manolo				0
 Victor				60
+Paco de Lucía				120
