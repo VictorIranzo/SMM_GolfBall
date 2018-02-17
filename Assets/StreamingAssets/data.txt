@@ -1,0 +1,2 @@
+Manolo				0
+Victor				60

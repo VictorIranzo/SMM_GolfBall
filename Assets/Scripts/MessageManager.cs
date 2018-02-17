@@ -10,23 +10,24 @@ public class MessageManager : MonoBehaviour {
     public Text BodyText;
     public InputField nickField;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         if (GameController.GameResult == -1) {
             HeaderText.text = "Game over";
             BodyText.text = "You lose! ";
         }
-        else {
+        if (GameController.GameResult == 1)
+        {
             HeaderText.text = "Congratulations";
             BodyText.text = "You win! ";
         }
-        BodyText.text += "You get " + PlayerController.coinsCount + " coins and " + PlayerController.pointsCount + " points.\n";
+        BodyText.text += "You get " + GameController.coinsCount + " coins and " + GameController.pointsCount + " points.\n";
         BodyText.text += CustomizedMessage(); 
 	}
 
     private string CustomizedMessage()
     {
-        int points = PlayerController.pointsCount;
+        int points = GameController.pointsCount;
 
         if (points < 100) return "You can feel bad. It is a very poor result.";
         if (points < 200) return "Not bad, but you can do it much better.";
@@ -37,8 +38,8 @@ public class MessageManager : MonoBehaviour {
 
     public void SaveScore()
     {
-        // TODO: Store scores.
-
+        Score score = new Score(nickField.text, GameController.pointsCount);
+        DataController.AddScore(score);
         MenuBack();
     }
 

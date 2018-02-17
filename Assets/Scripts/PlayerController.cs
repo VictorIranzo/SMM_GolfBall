@@ -10,23 +10,21 @@ public class PlayerController : MonoBehaviour {
     // This property is set from the Unity enviroment.
     public float speed;
     public Text coinsText;
-    public Text winText;
     public Text pointsText;
 
     private Rigidbody playerRigidBody;
-
-    public static int coinsCount;
-    public static int pointsCount;
 
     // Reference to Rigidbody is set in this method. It is called exactly once in the lifetime of the script before any of the Update methods.
     void Start() {
         // Gets the Rigidbody component of the player.
         playerRigidBody = GetComponent<Rigidbody>();
-        coinsCount = 0;
-        pointsCount = 0;
+
+        GameController.coinsCount = 0;
+        GameController.pointsCount = 0;
+        GameController.GameResult = 0;
+
         this.SetCountText();
         this.SetPointText();
-        winText.text = "";
     }
 
     // Called before each physics compute.
@@ -48,23 +46,24 @@ public class PlayerController : MonoBehaviour {
         if (other.gameObject.CompareTag("Pick Up"))
         {
             other.gameObject.SetActive(false);
-            coinsCount++;
+            GameController.coinsCount++;
             this.SetCountText();
             this.IncreasePoints();
         }
         if (other.gameObject.CompareTag("Fall plane"))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            GameController.GameResult = -1;
+            GameController.GoToNextLevel();
         }
-        // Destroy(other.gameObject); This sentence destroy the objects.
     }
 
     void SetCountText()
     {
-        coinsText.text = coinsCount.ToString();
-        if (coinsCount >= 12)
+        coinsText.text = GameController.coinsCount.ToString();
+        if (GameController.coinsCount >= 12)
         {
-            winText.text = "You win!";
+            GameController.GameResult = 1;
+            GameController.GoToNextLevel();
         }
     }
 
@@ -72,12 +71,12 @@ public class PlayerController : MonoBehaviour {
     {
         // We add to the points the time when the coin is caught rounded to the decimal part. 
         // For example, if a coins is collected in the time 48, 50 points will be added.
-        pointsCount += (int)Math.Round(((double)CounterScript.counter)/10) *10;
+        GameController.pointsCount += (int)Math.Round(((double)CounterScript.counter)/10) *10;
         SetPointText();
     }
 
     void SetPointText()
     {
-        pointsText.text = pointsCount.ToString();
+        pointsText.text = GameController.pointsCount.ToString();
     }
 }

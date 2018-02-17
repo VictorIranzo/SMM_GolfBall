@@ -17,7 +17,14 @@ public class CounterScript : MonoBehaviour {
     IEnumerator DecreaseTime() {
         counter--;
         countText.text = counter.ToString();
-        yield return new WaitForSeconds(1);
-        StartCoroutine(DecreaseTime());
+        if (counter > 0)
+        {
+            yield return new WaitForSeconds(1);
+            StartCoroutine(DecreaseTime());
+        }
+        else {
+            GameController.GameResult = -1;
+            GameController.GoToNextLevel();
+        }
     }
 }
