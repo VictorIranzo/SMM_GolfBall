@@ -14,8 +14,9 @@ public class PlayerController : MonoBehaviour {
     public Text pointsText;
 
     private Rigidbody playerRigidBody;
-    private int coinsCount;
-    private int pointsCount;
+
+    public static int coinsCount;
+    public static int pointsCount;
 
     // Reference to Rigidbody is set in this method. It is called exactly once in the lifetime of the script before any of the Update methods.
     void Start() {
