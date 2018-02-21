@@ -1,3 +1,7 @@
-Manolo				0
-Victor				60
-Paco de Lucía				120
+Manolo											0
+Victor											60
+Paco											120
+María											40
+Sergio											200
+Víctor											60
+Victor											60

@@ -11,6 +11,6 @@
 
     public override string ToString()
     {
-        return this.playerNick + "\t\t\t\t" + this.points;
+        return this.playerNick + "\t\t\t\t\t\t\t\t\t\t\t" + this.points;
     }
 }
