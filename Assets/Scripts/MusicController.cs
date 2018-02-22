@@ -19,15 +19,9 @@ public class MusicController : MonoBehaviour {
         isMuted = false;
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void SetMusicState() {
         if (!isMuted)
         {
-            Debug.Log("Click");
             music.Pause();
             isMuted = true;
             animator.SetBool("mute",true);
@@ -35,7 +29,6 @@ public class MusicController : MonoBehaviour {
         else {
             music.UnPause();
             isMuted = false;
-            animator.SetTrigger("ActiveSound");
             animator.SetBool("mute", false);
         }
     }
