@@ -23,4 +23,9 @@ public class MenuScripts : MonoBehaviour {
     {
         SceneManager.LoadScene("About");
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
