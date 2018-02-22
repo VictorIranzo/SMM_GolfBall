@@ -42,7 +42,7 @@ public class ScoresController : MonoBehaviour {
         }
         if (bestScores.Count > 2)
         {
-            Score bronze = bestScores.ElementAt(1);
+            Score bronze = bestScores.ElementAt(2);
             bronzeUser.text = bronze.playerNick;
             bronzePoints.text = bronze.points.ToString();
         }

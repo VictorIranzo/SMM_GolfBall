@@ -29,11 +29,19 @@ public class MessageManager : MonoBehaviour {
     {
         int points = GameController.pointsCount;
 
-        if (points < 100) return "You can feel bad. It is a very poor result.";
-        if (points < 200) return "Not bad, but you can do it much better.";
-        if (points < 550) return "Well done! You can improve it.";
+        if (GameController.GameResult == 1)
+        {
+            if (points < 100) return "You can feel bad. It is a very poor result.";
+            if (points < 200) return "Not bad, but you can do it much better.";
+            if (points < 550) return "Well done! You can improve it.";
 
-        return "Amazing! You are one of the best players.";
+            return "Amazing! You are one of the best players.";
+        }
+        else {
+            if (points < 200) return "Come one. Try again!";
+
+            return "Bad luck. You can improve this score.";
+        }
     }
 
     public void SaveScore()
