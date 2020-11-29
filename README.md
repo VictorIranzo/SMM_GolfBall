@@ -1,4 +1,4 @@
-# SMM_Practice2
+# SMM_Practice1
 (Developed during the CS Degree) A very simple Unity game in 3-dimensions that consists on rolling the ball using the keyboard arrows to collect all the pick ups.
 
 The game looks like a golf game where the player is the ball in a world of grass circled by wood walls. 
